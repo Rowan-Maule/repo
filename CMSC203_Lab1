@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class MovieDriver 
+{
+	public static void main(String[] args) 
+	{
+		boolean restart = true;
+		Scanner input = new Scanner(System.in);
+		Movie movie = new Movie();
+		
+		while(restart == true) 
+		{
+			//movie class stuff
+			System.out.println("Enter the name of a movie: ");
+			String movieTitle = input.nextLine();
+			movie.setTitle(movieTitle);
+			System.out.println("Enter the rating: ");
+			String movieRating = input.nextLine();
+			movie.setRating(movieRating);
+			System.out.println("Enter the number of tickets sold: ");
+			int movieTickets = input.nextInt();
+			movie.setSoldTickets(movieTickets);
+				
+			System.out.println(movie.toString());
+			
+			//ask if want to restart
+			boolean validate = true;
+			while(validate == true)
+			{
+				System.out.println("Do you want to enter another movie? (enter y/n): ");
+				String retry = input.next();
+				
+				if(retry.equals("y"))
+				{
+					restart = true;
+					validate = false;
+				} else if(retry.equals("n")) {
+					restart = false;
+					validate = false;
+				} else {
+					System.out.println("Please enter y or n!");
+					validate = true;
+				}
+			}
+			input.nextLine();
+		}
+		System.out.println("Bye!");
+		input.close();
+	}
+}
